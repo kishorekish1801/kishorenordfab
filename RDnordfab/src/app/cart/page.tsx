@@ -1,0 +1,16 @@
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ArrowRight, ShieldCheck, Truck, Leaf, Trash2 } from "lucide-react";
+import { useStore } from "@/context/StoreContext";
+import ProductCard from "@/components/products/ProductCard";
+import { products } from "@/data/products";
+import PageHero from "@/components/shared/PageHero";
+
+export default function CartPage() {
+  const { cart, cartTotal, updateQuantity, removeFromCart } = useStore();
+  const shipping = cartTotal >= 999 || cartTotal === 0 ? 0 : 49;
+  const vat = cartTotal * 0.2;
+  const total = cartTotal + shipping;
+  return <><PageHero eyebrow="Your selection" title="Your" accent="cart" description="Beautiful designs, a more sustainable tomorrow." image="/images/banners/nature-collection.webp"/><div className="page-content"><div className="cart-layout"><section className="form-card cart-items-panel"><div className="page-title-row"><h2>Cart Items ({cart.reduce((s,i)=>s+i.quantity,0)})</h2><button className="clear-filters" onClick={()=>cart.forEach((i)=>removeFromCart(i.product.id))}>Clear Cart</button></div>{cart.length ? cart.map(({product,quantity})=><div className="cart-line" key={product.id}><input type="checkbox" defaultChecked aria-label={`Select ${product.name}`}/><Image src={product.image} alt={product.name} width={100} height={90}/><div><strong>{product.name}</strong><small>Material: {product.material} · Natural colour</small><small className="stock-label">● In Stock</small><div className="quantity-control"><button onClick={()=>updateQuantity(product.id,quantity-1)}>−</button><span>{quantity}</span><button onClick={()=>updateQuantity(product.id,quantity+1)}>+</button></div></div><strong>{product.price*quantity} SEK</strong><button className="remove-line" onClick={()=>removeFromCart(product.id)} aria-label="Remove item"><Trash2 size={16}/></button></div>):<div className="empty-state"><h2>Your cart is waiting for something beautiful</h2><p>Explore our Nordic-inspired 3D printed collection.</p><Link href="/shop" className="button button-primary">Continue Shopping <ArrowRight size={16}/></Link></div>}<Link href="/shop" className="continue-link"><ArrowLeft size={15}/> Continue Shopping</Link></section><aside className="cart-total"><h2>Order Summary</h2><div><span>Subtotal ({cart.length} items)</span><strong>{cartTotal.toFixed(0)} SEK</strong></div><div><span>Shipping</span><strong>{shipping===0?"Free":`${shipping} SEK`}</strong></div><div><span>Estimated VAT</span><strong>{vat.toFixed(0)} SEK</strong></div><div className="total-row"><span>Total</span><strong>{total.toFixed(0)} SEK</strong></div><Link href={cart.length?"/checkout":"/shop"} className="button button-primary">Proceed to Checkout <ArrowRight size={16}/></Link><div className="cart-perks"><span><Truck/> Free shipping over 999 SEK</span><span><Leaf/> Sustainable materials</span><span><ShieldCheck/> Secure payment</span></div></aside></div><section className="related-section"><div className="section-heading"><h2>You May Also Like</h2><Link href="/shop" className="text-link">View All <ArrowRight size={15}/></Link></div><div className="shop-products-grid related-grid">{products.slice(2,6).map((p)=><ProductCard key={p.id} product={p}/>)}</div></section></div></>;
+}

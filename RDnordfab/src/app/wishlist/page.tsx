@@ -1,0 +1,14 @@
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Heart, Leaf, Bell, Box, ShoppingCart } from "lucide-react";
+import PageHero from "@/components/shared/PageHero";
+import { useStore } from "@/context/StoreContext";
+import { products } from "@/data/products";
+import ProductCard from "@/components/products/ProductCard";
+
+export default function WishlistPage() {
+  const { wishlist, toggleWishlist, addToCart } = useStore();
+  const saved = products.filter((p)=>wishlist.includes(p.id));
+  return <><PageHero eyebrow="Saved for later" title="My" accent="wishlist" description="Your favourite designs, all in one place. Save items you love and come back anytime." image="/images/banners/nature-collection.webp"/><div className="page-content"><div className="wishlist-layout"><section><div className="page-title-row"><h2>Saved Items ({saved.length})</h2><button className="clear-filters" onClick={()=>saved.forEach((p)=>toggleWishlist(p.id))}>Clear All</button></div>{saved.length ? <div className="wishlist-grid">{saved.map((p)=><article className="wishlist-card" key={p.id}><div className="wishlist-image"><Image src={p.image} alt={p.name} fill sizes="25vw"/><span>● In Stock</span><button onClick={()=>toggleWishlist(p.id)} aria-label="Remove from wishlist"><Heart fill="currentColor"/></button></div><div className="wishlist-card-info"><strong>{p.name}</strong><b>{p.price} SEK</b><div className="rating-stars">★★★★★ <small>({p.reviews})</small></div><div className="wishlist-colors">{p.colors.map(c=><i key={c} style={{background:c}}/>)}</div><button className="button button-primary" onClick={()=>addToCart(p)}><ShoppingCart size={15}/> Add to Cart</button><Link href={`/products/${p.slug}`} className="button button-outline">View Details</Link></div></article>)}</div> : <div className="empty-state"><Heart size={35}/><h2>Your wishlist is empty</h2><p>Save your favourite designs here and add them to your cart whenever you're ready.</p><Link href="/shop" className="button button-primary">Explore Products <ArrowRight size={16}/></Link></div>}</section><aside className="wishlist-aside"><div><Leaf size={30}/><h3>Your Saved Designs</h3><p>Keep track of the products you love. Add them to cart anytime.</p></div><span><Heart/> Save your favourite products</span><span><Bell/> Get notified when the price drops</span><span><Box/> Compare products easily</span><span><ShoppingCart/> Move to cart with one click</span></aside></div><section className="related-section"><div className="section-heading"><h2>You May Also Like</h2><Link href="/shop" className="text-link">View All <ArrowRight size={15}/></Link></div><div className="shop-products-grid related-grid">{products.filter((p)=>!wishlist.includes(p.id)).slice(0,4).map((p)=><ProductCard key={p.id} product={p}/>)}</div></section></div></>;
+}

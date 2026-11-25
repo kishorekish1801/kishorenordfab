@@ -1,0 +1,14 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: vercel-deployment-task@3
+    displayName: 'Deploy RD Nordfab to Vercel Production'
+    inputs:
+      vercelProjectId: 'prj_uKFiheAxDPGNiSWfS5w7GLnG0Kp4'
+      vercelTeamId: 'team_GbKERSI3GjMG2Ukm2S0S85zE'
+      vercelToken: $(VERCELTOKEN)
+      production: true

@@ -1,0 +1,2 @@
+import InfoLanding from "@/components/shared/InfoLanding";
+export default function CareersPage(){return <InfoLanding eyebrow="Work with us" title="Careers" accent="at RD NORDFAB" description="Help us bring digital ideas into real products." body={["We are growing a design-led 3D printing business focused on useful products, careful material choices and custom manufacturing.","There are no open roles listed in this preview. For partnerships or future opportunities, please contact our team and share a little about your experience."]}/>}
