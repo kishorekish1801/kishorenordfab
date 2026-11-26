@@ -603,7 +603,7 @@ export default function ShopPage() {
 
   return (
     <>
-      {/* CATEGORY NAVIGATION */}
+      <header className="catalog-heading page-container"><p className="studio-label">RD NORDFAB / Shop</p><h1>The object collection</h1></header>
 
       <div className="page-container category-pills">
 
@@ -687,7 +687,7 @@ export default function ShopPage() {
 
       {/* FULL-WIDTH PRODUCTS */}
 
-      <main className="page-content shop-layout-wrap nord-shop-content">
+      <div className="page-content shop-layout-wrap nord-shop-content">
         <div className="shop-layout nord-shop-layout">
           <section className="nord-product-area">
 
@@ -754,7 +754,7 @@ export default function ShopPage() {
             )}
           </section>
         </div>
-      </main>
+      </div>
 
       {/* DARK BACKDROP */}
 

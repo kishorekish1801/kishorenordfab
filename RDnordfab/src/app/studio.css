@@ -1,0 +1,82 @@
+:root {
+  --paper: #f8f6ef;
+  --pine: #203f33;
+  --display: "Bodoni Moda", Georgia, serif;
+}
+.studio-label, .studio-scroll { font: 650 10px/1.4 "DM Sans", sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+.studio-label { margin: 0 0 18px; }
+.studio-hero { min-height: clamp(575px, 46vw, 740px); position: relative; isolation: isolate; display: flex; align-items: center; color: var(--pine); background: var(--paper); }
+.studio-hero-art { z-index: -1; object-fit: cover; object-position: center top; }
+.studio-hero-copy { margin-inline: max(5vw, calc((100vw - 1320px) / 2)); padding: 64px 0 90px; }
+.studio-hero h1, .studio-heading h2, .studio-services h2, .studio-materials h2, .catalog-heading h1, .stage-copy h2 { margin: 0; font: 400 clamp(38px, 4vw, 66px)/1.06 var(--display); letter-spacing: -.055em; }
+.studio-hero h1 { font-size: clamp(50px, 5.55vw, 90px); color: #21372c; }
+.studio-hero h1 em { color: var(--green); }
+.studio-hero-copy > p:not(.studio-label) { max-width: 34ch; margin: 23px 0; font-size: 16px; line-height: 1.6; }
+.studio-scroll { position: absolute; left: max(5vw, calc((100vw - 1320px) / 2)); bottom: 26px; display: inline-flex; align-items: center; gap: 10px; }
+.studio-process { isolation: isolate; scroll-margin-top: 80px; }
+.studio-stage { display: grid; grid-template-columns: 45% 55%; background: #203f33; color: #fcf7e9; min-height: min(64vh, 540px); }
+.studio-stage:nth-child(2) { background: #d9dfd1; color: #203f33; }
+.studio-stage:nth-child(3) { background: #eae2d4; color: #30372c; }
+.stage-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(30px, 5vw, 86px); }
+.stage-copy h2 { font-size: clamp(64px, 8vw, 130px); }
+.stage-copy i { color: #9dab83; }
+.stage-copy > p:last-child { max-width: 34ch; margin: 22px 0 0; line-height: 1.7; font-size: 16px; }
+.stage-photo, .service-photo { position: relative; overflow: hidden; }
+.stage-photo img, .service-photo img { object-fit: cover; }
+@media (min-width: 701px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+  .studio-stage { position: sticky; top: 80px; }
+}
+.studio-selection { padding-block: clamp(52px, 7vw, 110px); }
+.studio-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 30px; }
+.studio-heading a, .studio-services a, .studio-materials a { display: inline-flex; align-items: center; gap: 12px; border-bottom: 1px solid currentColor; padding-block: 6px; font-weight: 600; }
+.studio-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(12px,2vw,32px); }
+.product-card { border-radius: 0; background: transparent; border: 0; }
+.product-card .product-card-info { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.product-card .product-name { font: 500 clamp(17px,1.7vw,25px)/1.2 var(--display); }
+.product-card .product-image-wrap { border-radius: 2px; }
+.studio-services { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px,3vw,48px); margin-bottom: clamp(54px,7vw,110px); }
+.service-photo { aspect-ratio: 2 / 1; }
+.studio-services article > div:last-child { padding: 26px 0; }
+.studio-services h2 { font-size: clamp(30px,3vw,48px); }
+.studio-services article p:not(.studio-label), .studio-materials p:not(.studio-label) { line-height: 1.65; max-width: 46ch; }
+.studio-materials { background: #dbe2d4; color: var(--pine); padding-block: clamp(44px,6vw,96px); }
+.catalog-heading { padding-block: clamp(32px,5vw,72px) 12px; }
+.page-hero h1, .custom-page-copy h1, .product-detail-copy h1, .checkout-head h1, .form-card h2, .cart-total h2, .info-content h2, .empty-state h2 { font-family: var(--display); font-weight: 400; text-transform: none; letter-spacing: -.035em; }
+.page-hero h1 em, .custom-page-copy h1 em { font-weight: 400; font-style: italic; }
+.page-hero { min-height: clamp(210px,24vw,360px); }
+.form-card, .cart-total { border-radius: 4px; box-shadow: none; }
+.site-footer { border-top: 1px solid #cad2c6; }
+.footer-column a { font-size: 12px; }
+:focus-visible { outline: 2px solid #637e51; outline-offset: 3px; }
+@media (max-width: 700px) {
+  .studio-hero { align-items: start; min-height: 648px; }
+  .studio-hero .studio-hero-art { top: auto !important; height: 54% !important; object-position: 77% bottom; }
+  .studio-hero-copy { margin: 0; padding: 38px 20px 48px; width: 100%; background: linear-gradient(var(--paper) 85%, transparent); }
+  .studio-hero h1 { font-size: clamp(39px,8.5vw,57px); }
+  .studio-hero-copy > p:not(.studio-label) { margin: 14px 0 20px; font-size: 15px; }
+  .studio-scroll { bottom: 12px; left: 16px; background: var(--paper); padding: 8px 12px; }
+  .studio-stage, .studio-services { grid-template-columns: 1fr; }
+  .stage-copy { padding: 32px 20px; }
+  .stage-copy h2 { font-size: 58px; }
+  .stage-copy > p:last-child { margin-top: 12px; }
+  .stage-photo { aspect-ratio: 1.9; }
+  .studio-heading { align-items: start; flex-direction: column; }
+  .studio-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.studio-material-guide { padding-block: clamp(40px,6vw,90px); display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,280px),1fr)); gap: 24px; scroll-margin-top: 72px; }
+.studio-material-guide h2, .auth-panel h2, .auth-copy h1, .about-story h2, .about-values h2, .custom-form-heading h2 { margin-top: 0; font: 400 clamp(32px,3.5vw,54px)/1.12 var(--display); letter-spacing: -.04em; }
+.studio-material-guide dl { margin: 0; }
+.studio-material-guide dt { border-top: 1px solid #a9b2a6; padding-top: 14px; font-weight: 700; }
+.studio-material-guide dd { margin: 5px 0 18px; line-height: 1.6; }
+.auth-panel, .info-content .form-card { border-radius: 4px; }
+.site-footer { background: #edece3; }
+.footer-brand p, .footer-column a, .footer-bottom-inner { color: #4c5e51; }
+.footer-column h3, .footer-newsletter h3 { text-transform: uppercase; letter-spacing: .1em; }
+@media (min-width: 701px) {
+  .page-hero { background: #e9ece1; }
+  .page-hero img { left: auto !important; width: 44% !important; object-position: center; }
+  .page-hero::after { display: none; }
+  .page-hero-inner { padding-block: 40px; padding-right: 44%; }
+  .page-hero h1 { font-size: clamp(36px,4.3vw,72px); }
+}
