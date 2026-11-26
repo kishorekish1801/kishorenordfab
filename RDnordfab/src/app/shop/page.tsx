@@ -10,6 +10,7 @@ import {
 
 import type { KeyboardEvent } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import ProductCard from "@/components/products/ProductCard";
 import { categories, products } from "@/data/products";
@@ -479,7 +480,7 @@ export default function ShopPage() {
       case "Category":
         return (
           <div className="nord-filter-options">
-            {categories.map((item) => (
+            {categories.filter(item => item.name !== "Custom Designs").map((item) => (
               <label
                 key={item.name}
                 className="nord-filter-option"
@@ -662,7 +663,7 @@ export default function ShopPage() {
 
         {/* OTHER CATEGORIES */}
 
-        {categories.map((item) => (
+        {categories.filter(item => item.name !== "Custom Designs").map((item) => (
           <button
             type="button"
             key={item.name}
@@ -683,6 +684,7 @@ export default function ShopPage() {
             <span>{item.name}</span>
           </button>
         ))}
+        <Link className="category-pill" href="/custom-print#quote-form">Custom Designs</Link>
       </div>
 
       {/* FULL-WIDTH PRODUCTS */}

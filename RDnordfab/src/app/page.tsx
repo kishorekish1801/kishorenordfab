@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
-import ProductCard from "@/components/products/ProductCard";
-import { products } from "@/data/products";
+import ObjectGallery from "@/components/home/ObjectGallery";
 
 const stages = [
   { name: "Design", image: "/images/banners/design-workspace.webp", alt: "A curved vase model on a studio monitor", body: "Every curve starts on screen. We shape the profile, balance the proportions and prepare the model for printing." },
@@ -23,20 +22,20 @@ export default function HomePage() {
           <Link className="button button-outline" href="/custom-print">Custom Print</Link>
         </div>
       </div>
-      <a className="studio-scroll" href="#process"><ArrowDown size={15}/> Explore the process</a>
+      <a className="studio-scroll" href="#collection"><ArrowDown size={15}/> Explore the collection</a>
     </section>
+    <ObjectGallery />
     <section id="process" className="studio-process" aria-label="Our process">
       {stages.map((stage, index) => <article className="studio-stage" key={stage.name}>
         <div className="stage-copy"><p className="studio-label">Our process · 0{index + 1} / 03</p>
           <h2>{stage.name}<i>.</i></h2><p>{stage.body}</p>
         </div>
-        <div className="stage-photo"><Image src={stage.image} alt={stage.alt} fill sizes="(max-width: 700px) 100vw, 55vw"/></div>
+        <div className="stage-photo">{stage.name === "Print" ? (
+          <video controls muted playsInline preload="none" poster={stage.image} aria-label="Watch the studio printer in action">
+            <source src="/videos/rd-nordfab-hero.mp4" type="video/mp4"/>
+          </video>
+        ) : <Image src={stage.image} alt={stage.alt} fill sizes="(max-width: 700px) 100vw, 55vw"/>}</div>
       </article>)}
-    </section>
-    <section className="studio-selection page-container">
-      <div className="studio-heading"><div><p className="studio-label">The collection</p><h2>Objects for everyday life</h2></div>
-        <Link href="/shop">Shop all objects <ArrowUpRight size={17}/></Link></div>
-      <div className="studio-grid">{[products[0], products[1], products[4], products[3]].map(product => <ProductCard key={product.id} product={product}/>)}</div>
     </section>
     <section className="studio-services page-container" aria-label="Printing services">
       <article><div className="service-photo"><Image src="/images/banners/design-workspace.webp" alt="3D modelling workstation" fill sizes="(max-width: 700px) 100vw, 48vw"/></div>
