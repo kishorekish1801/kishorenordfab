@@ -1,0 +1,37 @@
+.hero {
+  width: min(1520px, 100%);
+  margin: auto;
+  padding: clamp(22px, 3vw, 48px) clamp(20px, 5vw, 84px) 20px;
+  display: grid;
+  grid-template-columns: .88fr 1.12fr;
+  gap: 18px clamp(24px, 4vw, 68px);
+  color: #24392f;
+}
+.intro { align-self: center; padding: 22px 0; }
+.kicker, .scroll, .figure figcaption { font: 650 10px/1.4 "DM Sans", sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.kicker { display: flex; align-items: center; gap: 12px; margin: 0 0 24px; }
+.kicker::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+.intro h1 { margin: 0; font: 400 clamp(54px, 6.65vw, 106px)/.99 var(--display); letter-spacing: -.065em; }
+.intro h1 em { color: var(--green); white-space: nowrap; }
+.description { max-width: 34ch; margin: 24px 0; font-size: 16px; line-height: 1.6; }
+.figure { margin: 0; min-width: 0; }
+.portrait { position: relative; height: clamp(420px, 40vw, 625px); background: #e9e3d5; }
+.portrait img { object-fit: cover; object-position: 85% 50%; }
+.figure figcaption { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0; font-size: 9px; }
+.figure figcaption i { margin: 0 6px; color: #7c866e; }
+.figure figcaption span:last-child { color: #516053; font-weight: 500; }
+.detail { position: absolute; right: 27%; top: 65%; }
+.detail summary { display: grid; place-items: center; list-style: none; width: 44px; height: 44px; border-radius: 50%; background: var(--paper); color: var(--pine); border: 1px solid #61715e; cursor: pointer; }
+.detail summary::-webkit-details-marker { display: none; }
+.detail[open] summary svg { transform: rotate(45deg); }
+.detail > div { position: absolute; right: 0; bottom: calc(100% + 9px); width: min(210px, 50vw); padding: 15px; background: var(--paper); border: 1px solid #ccd0c2; }
+.detail p { margin: 6px 0 0; line-height: 1.5; }
+.scroll { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; min-height: 46px; padding-top: 10px; border-top: 1px solid #c4c9bd; }
+@media (max-width: 700px) {
+  .hero { grid-template-columns: 1fr; gap: 10px; padding: 20px 18px 4px; }
+  .intro { padding: 6px 0 12px; }
+  .kicker { margin-bottom: 14px; }
+  .intro h1 { font-size: clamp(48px, 11.2vw, 72px); }
+  .description { margin: 14px 0 18px; font-size: 14px; }
+  .portrait { height: clamp(265px, 76vw, 400px); }
+}

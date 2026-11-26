@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import StudioHero from "@/components/home/StudioHero";
 import ObjectGallery from "@/components/home/ObjectGallery";
 
 const stages = [
@@ -11,19 +12,7 @@ const stages = [
 
 export default function HomePage() {
   return <>
-    <section className="studio-hero">
-      <Image className="studio-hero-art" src="/images/banners/rd-nordfab-hero-final-reference-v4.webp" alt="Ivory David bust with an open lattice shoulder" fill priority sizes="100vw" />
-      <div className="studio-hero-copy">
-        <p className="studio-label">Nordic 3D print studio</p>
-        <h1>Turn Digital Ideas<br />into <em>Real Products</em></h1>
-        <p>Sculptural objects for your home. Precision prints for your next project.</p>
-        <div className="hero-actions">
-          <Link className="button button-primary" href="/shop">Shop Now <ArrowRight size={16}/></Link>
-          <Link className="button button-outline" href="/custom-print">Custom Print</Link>
-        </div>
-      </div>
-      <a className="studio-scroll" href="#collection"><ArrowDown size={15}/> Explore the collection</a>
-    </section>
+    <StudioHero />
     <ObjectGallery />
     <section id="process" className="studio-process" aria-label="Our process">
       {stages.map((stage, index) => <article className="studio-stage" key={stage.name}>

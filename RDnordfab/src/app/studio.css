@@ -3,16 +3,9 @@
   --pine: #203f33;
   --display: "Bodoni Moda", Georgia, serif;
 }
-.studio-label, .studio-scroll { font: 650 10px/1.4 "DM Sans", sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+.studio-label { font: 650 10px/1.4 "DM Sans", sans-serif; letter-spacing: .16em; text-transform: uppercase; }
 .studio-label { margin: 0 0 18px; }
-.studio-hero { min-height: clamp(575px, 46vw, 740px); position: relative; isolation: isolate; display: flex; align-items: center; color: var(--pine); background: var(--paper); }
-.studio-hero-art { z-index: -1; object-fit: cover; object-position: center top; }
-.studio-hero-copy { margin-inline: max(5vw, calc((100vw - 1320px) / 2)); padding: 64px 0 90px; }
-.studio-hero h1, .studio-heading h2, .studio-services h2, .studio-materials h2, .catalog-heading h1, .stage-copy h2 { margin: 0; font: 400 clamp(38px, 4vw, 66px)/1.06 var(--display); letter-spacing: -.055em; }
-.studio-hero h1 { font-size: clamp(50px, 5.55vw, 90px); color: #21372c; }
-.studio-hero h1 em { color: var(--green); }
-.studio-hero-copy > p:not(.studio-label) { max-width: 34ch; margin: 23px 0; font-size: 16px; line-height: 1.6; }
-.studio-scroll { position: absolute; left: max(5vw, calc((100vw - 1320px) / 2)); bottom: 26px; display: inline-flex; align-items: center; gap: 10px; }
+.studio-heading h2, .studio-services h2, .studio-materials h2, .catalog-heading h1, .stage-copy h2 { margin: 0; font: 400 clamp(38px, 4vw, 66px)/1.06 var(--display); letter-spacing: -.055em; }
 .studio-process { isolation: isolate; scroll-margin-top: 80px; }
 .studio-stage { display: grid; grid-template-columns: 45% 55%; background: #203f33; color: #fcf7e9; min-height: min(64vh, 540px); }
 .studio-stage:nth-child(2) { background: #d9dfd1; color: #203f33; }
@@ -49,12 +42,6 @@
 .footer-column a { font-size: 12px; }
 :focus-visible { outline: 2px solid #637e51; outline-offset: 3px; }
 @media (max-width: 700px) {
-  .studio-hero { align-items: start; min-height: 648px; }
-  .studio-hero .studio-hero-art { top: auto !important; height: 54% !important; object-position: 77% bottom; }
-  .studio-hero-copy { margin: 0; padding: 38px 20px 48px; width: 100%; background: linear-gradient(var(--paper) 85%, transparent); }
-  .studio-hero h1 { font-size: clamp(39px,8.5vw,57px); }
-  .studio-hero-copy > p:not(.studio-label) { margin: 14px 0 20px; font-size: 15px; }
-  .studio-scroll { bottom: 12px; left: 16px; background: var(--paper); padding: 8px 12px; }
   .studio-stage, .studio-services { grid-template-columns: 1fr; }
   .stage-copy { padding: 32px 20px; }
   .stage-copy h2 { font-size: 58px; }
